@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     template: '%s - Protocol API Reference',
     default: 'Protocol API Reference',
   },
+  icons: {
+    icon: ['/icon-bankerise.svg'],
+  },
 }
 
 export default async function RootLayout({

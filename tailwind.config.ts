@@ -41,6 +41,12 @@ export default {
         7.5: '0.075',
         15: '0.15',
       },
+      colors: {
+        brand: {
+          400: '#78b8d3',
+          600: '#4c4d84',
+        }
+      }
     },
   },
   plugins: [typographyPlugin, headlessuiPlugin],
