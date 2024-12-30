@@ -6,11 +6,12 @@ import { Layout } from '@/components/Layout'
 import { type Section } from '@/components/SectionProvider'
 
 import '@/styles/tailwind.css'
+import { HeroPattern } from '@/components/HeroPattern'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Protocol API Reference',
-    default: 'Protocol API Reference',
+    template: '%s - Bankerise Studio',
+    default: 'Bankerise Studio',
   },
   icons: {
     icon: ['/icon-bankerise.svg'],
@@ -36,7 +37,10 @@ export default async function RootLayout({
       <body className="flex min-h-full bg-white antialiased dark:bg-zinc-900">
         <Providers>
           <div className="w-full">
-            <Layout allSections={allSections}>{children}</Layout>
+            <Layout allSections={allSections}>
+              <HeroPattern />
+              {children}
+            </Layout>
           </div>
         </Providers>
       </body>

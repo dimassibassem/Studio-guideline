@@ -252,35 +252,35 @@ export const navigation: Array<NavGroup> = [
   {
     title: 'Business Process',
     links: [
-      { title: 'Introduction', href: '/business-process' },
-      { title: 'Processes list', href: '/business-process/processes-list' },
-      { title: 'Process preview', href: '/business-process/process-preview' },
-      { title: 'modeler', href: '/business-process/modeler' },
+      { title: 'Business Process Introduction', href: '/business-process' },
+      { title: 'Processes List', href: '/business-process/processes-list' },
+      { title: 'Process Preview', href: '/business-process/process-preview' },
+      { title: 'Modeler', href: '/business-process/modeler' },
     ],
   },
   {
     title: 'Forms',
     links: [
-      { title: 'Introduction', href: '/forms' },
-      { title: 'Forms list', href: '/forms/forms-list' },
-      { title: 'Form preview', href: '/forms/form-preview' },
-      { title: 'Form builder', href: '/forms/form-builder' },
+      { title: 'Forms Introduction', href: '/forms' },
+      { title: 'Forms List', href: '/forms/forms-list' },
+      { title: 'Form Preview', href: '/forms/form-preview' },
+      { title: 'Form Builder', href: '/forms/form-builder' },
     ],
   },
   {
     title: 'Decision Tables',
     links: [
-      { title: 'Introduction', href: '/decisions' },
+      { title: 'Decision Tables Introduction', href: '/decisions' },
       {
-        title: 'Decision tables list',
+        title: 'Decision Tables list',
         href: '/decisions/decisions-list',
       },
       {
-        title: 'Decision table preview',
+        title: 'Decision Tables Preview',
         href: '/decisions/decision-table-preview',
       },
       {
-        title: 'Decision table builder',
+        title: 'Decision Tables Builder',
         href: '/decisions/decision-table-builder',
       },
     ],
@@ -288,19 +288,19 @@ export const navigation: Array<NavGroup> = [
   {
     title: 'Apps',
     links: [
-      { title: 'Introduction', href: '/apps' },
-      { title: 'Apps list', href: '/apps/apps-list' },
-      { title: 'App preview', href: '/apps/app-preview' },
-      { title: 'App builder', href: '/apps/app-builder' },
+      { title: 'Apps Introduction', href: '/apps' },
+      { title: 'Apps List', href: '/apps/apps-list' },
+      { title: 'App Preview', href: '/apps/app-preview' },
+      { title: 'App Builder', href: '/apps/app-builder' },
     ],
   },
   {
     title: 'Message Center',
     links: [
-      { title: 'Introduction', href: '/message-center' },
-      { title: 'Messages list', href: '/message-center/messages-list' },
-      { title: 'Message preview', href: '/message-center/message-preview' },
-      { title: 'Message builder', href: '/message-center/message-builder' },
+      { title: 'Message Center Introduction', href: '/message-center' },
+      { title: 'Messages List', href: '/message-center/messages-list' },
+      { title: 'Message Preview', href: '/message-center/message-preview' },
+      { title: 'Message Builder', href: '/message-center/message-builder' },
     ],
   },
 ]

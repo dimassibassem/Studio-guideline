@@ -53,9 +53,21 @@ export function Note({ children }: { children: React.ReactNode }) {
   )
 }
 
-export function Row({ children }: { children: React.ReactNode }) {
+export function Row({
+  children,
+  className,
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
+  console.log(className)
   return (
-    <div className="grid grid-cols-1 items-start gap-x-16 gap-y-10 xl:max-w-none xl:grid-cols-2">
+    <div
+      className={clsx(
+        'grid grid-cols-1 items-start gap-x-16 gap-y-10 xl:max-w-none xl:grid-cols-2',
+        className,
+      )}
+    >
       {children}
     </div>
   )

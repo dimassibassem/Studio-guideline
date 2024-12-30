@@ -1,9 +1,15 @@
 import {ImagePreview} from "../../../components/ImagePreview";
 import {Col, Row} from "../../../components/mdx";
+import Image from "next/image";
+
+export const metadata = {
+    title: 'Processes list',
+    description: 'Processes list in Bankerise Studio.',
+}
 
 # Processes list
 
-## Introduction
+
 
 After logging in, you will be taken to the Processes list page. Here you can see all the processes that have been created.
 
@@ -25,7 +31,35 @@ After logging in, you will be taken to the Processes list page. Here you can see
     </Col>
 </Row>
 
+
 ## Actions {{ anchor: true }}
+
+<div className="flex flex-col">
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/processes/actions/create-process.png"
+            width={150}
+            height={48}
+            alt="create process"
+        />
+        Click the create process button at the top of the page to open a modal where you can create a new process.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/processes/actions/import-process.png"
+            width={150}
+            height={48}
+            alt="import process"
+        />
+
+        Click the import process button at the top of the page to open a modal where you can import a process
+    </div>
+
+</div>
+
 
 
 

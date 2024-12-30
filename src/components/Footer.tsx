@@ -45,7 +45,6 @@ function PageNavigation() {
   if (currentPageIndex === -1) {
     return null
   }
-
   let previousPage = allPages[currentPageIndex - 1]
   let nextPage = allPages[currentPageIndex + 1]
 
