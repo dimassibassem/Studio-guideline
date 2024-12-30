@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { AnimatePresence, motion, useIsPresent } from 'framer-motion'
+import { redirect } from 'next/navigation'
 
-import { Button } from '@/components/Button'
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
 import { useSectionStore } from '@/components/SectionProvider'
 import { Tag } from '@/components/Tag'
@@ -166,65 +166,76 @@ function NavigationGroup({
 
   return (
     <li className={clsx('relative mt-6', className)}>
-      <motion.h2
+      <motion.button
         layout="position"
-        className="text-xs font-semibold text-zinc-900 dark:text-white"
+        className={clsx(
+          'flex w-full items-center justify-between rounded-md px-2 py-1 text-sm font-semibold text-zinc-900 dark:text-white',
+          isActiveGroup
+            ? 'cursor-default'
+            : 'hover:bg-zinc-100 dark:hover:bg-zinc-900 dark:hover:bg-opacity-10',
+        )}
+        onClick={() => {
+          if (!isActiveGroup) {
+            redirect(group.links[0].href)
+          }
+        }}
       >
         {group.title}
-      </motion.h2>
-      <div className="relative mt-3 pl-2">
-        <AnimatePresence initial={!isInsideMobileNavigation}>
-          {isActiveGroup && (
+      </motion.button>
+
+      {isActiveGroup && (
+        <div className="relative mt-3 pl-2">
+          <AnimatePresence initial={!isInsideMobileNavigation}>
             <VisibleSectionHighlight group={group} pathname={pathname} />
-          )}
-        </AnimatePresence>
-        <motion.div
-          layout
-          className="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"
-        />
-        <AnimatePresence initial={false}>
-          {isActiveGroup && (
-            <ActivePageMarker group={group} pathname={pathname} />
-          )}
-        </AnimatePresence>
-        <ul role="list" className="border-l border-transparent">
-          {group.links.map((link) => (
-            <motion.li key={link.href} layout="position" className="relative">
-              <NavLink href={link.href} active={link.href === pathname}>
-                {link.title}
-              </NavLink>
-              <AnimatePresence mode="popLayout" initial={false}>
-                {link.href === pathname && sections.length > 0 && (
-                  <motion.ul
-                    role="list"
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: { delay: 0.1 },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      transition: { duration: 0.15 },
-                    }}
-                  >
-                    {sections.map((section) => (
-                      <li key={section.id}>
-                        <NavLink
-                          href={`${link.href}#${section.id}`}
-                          tag={section.tag}
-                          isAnchorLink
-                        >
-                          {section.title}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-            </motion.li>
-          ))}
-        </ul>
-      </div>
+          </AnimatePresence>
+          <motion.div
+            layout
+            className="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"
+          />
+          <AnimatePresence initial={false}>
+            {isActiveGroup && (
+              <ActivePageMarker group={group} pathname={pathname} />
+            )}
+          </AnimatePresence>
+          <ul role="list" className="border-l border-transparent">
+            {group.links.map((link) => (
+              <motion.li key={link.href} layout="position" className="relative">
+                <NavLink href={link.href} active={link.href === pathname}>
+                  {link.title}
+                </NavLink>
+                <AnimatePresence mode="popLayout" initial={false}>
+                  {link.href === pathname && sections.length > 0 && (
+                    <motion.ul
+                      role="list"
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: 1,
+                        transition: { delay: 0.1 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        transition: { duration: 0.15 },
+                      }}
+                    >
+                      {sections.map((section) => (
+                        <li key={section.id}>
+                          <NavLink
+                            href={`${link.href}#${section.id}`}
+                            tag={section.tag}
+                            isAnchorLink
+                          >
+                            {section.title}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
+      )}
     </li>
   )
 }
@@ -243,13 +254,57 @@ export const navigation: Array<NavGroup> = [
     ],
   },
   {
-    title: 'Resources',
+    title: 'Business Process',
     links: [
-      { title: 'Contacts', href: '/contacts' },
-      { title: 'Conversations', href: '/conversations' },
-      { title: 'Messages', href: '/messages' },
-      { title: 'Groups', href: '/groups' },
-      { title: 'Attachments', href: '/attachments' },
+      { title: 'Introduction', href: '/business-process' },
+      { title: 'Processes list', href: '/business-process/processes-list' },
+      { title: 'Process preview', href: '/business-process/process-preview' },
+      { title: 'modeler', href: '/business-process/modeler' },
+    ],
+  },
+  {
+    title: 'Forms',
+    links: [
+      { title: 'Introduction', href: '/forms' },
+      { title: 'Forms list', href: '/forms/forms-list' },
+      { title: 'Form preview', href: '/forms/form-preview' },
+      { title: 'Form builder', href: '/forms/form-builder' },
+    ],
+  },
+  {
+    title: 'Decision Tables',
+    links: [
+      { title: 'Introduction', href: '/decision-tables' },
+      {
+        title: 'Decision tables list',
+        href: '/decision-tables/decision-tables-list',
+      },
+      {
+        title: 'Decision table preview',
+        href: '/decision-tables/decision-table-preview',
+      },
+      {
+        title: 'Decision table builder',
+        href: '/decision-tables/decision-table-builder',
+      },
+    ],
+  },
+  {
+    title: 'Apps',
+    links: [
+      { title: 'Introduction', href: '/apps' },
+      { title: 'Apps list', href: '/apps/apps-list' },
+      { title: 'App preview', href: '/apps/app-preview' },
+      { title: 'App builder', href: '/apps/app-builder' },
+    ],
+  },
+  {
+    title: 'Message Center',
+    links: [
+      { title: 'Introduction', href: '/message-center' },
+      { title: 'Messages list', href: '/message-center/messages-list' },
+      { title: 'Message preview', href: '/message-center/message-preview' },
+      { title: 'Message builder', href: '/message-center/message-builder' },
     ],
   },
 ]
@@ -258,9 +313,6 @@ export function Navigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
       <ul role="list">
-        <TopLevelNavItem href="/">API</TopLevelNavItem>
-        <TopLevelNavItem href="#">Documentation</TopLevelNavItem>
-        <TopLevelNavItem href="#">Support</TopLevelNavItem>
         {navigation.map((group, groupIndex) => (
           <NavigationGroup
             key={group.title}
@@ -268,11 +320,6 @@ export function Navigation(props: React.ComponentPropsWithoutRef<'nav'>) {
             className={groupIndex === 0 ? 'md:mt-0' : ''}
           />
         ))}
-        <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">
-          <Button href="#" variant="filled" className="w-full">
-            Sign in
-          </Button>
-        </li>
       </ul>
     </nav>
   )
