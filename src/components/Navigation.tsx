@@ -274,18 +274,18 @@ export const navigation: Array<NavGroup> = [
   {
     title: 'Decision Tables',
     links: [
-      { title: 'Introduction', href: '/decision-tables' },
+      { title: 'Introduction', href: '/decisions' },
       {
         title: 'Decision tables list',
-        href: '/decision-tables/decision-tables-list',
+        href: '/decisions/decisions-list',
       },
       {
         title: 'Decision table preview',
-        href: '/decision-tables/decision-table-preview',
+        href: '/decisions/decision-table-preview',
       },
       {
         title: 'Decision table builder',
-        href: '/decision-tables/decision-table-builder',
+        href: '/decisions/decision-table-builder',
       },
     ],
   },
