@@ -12,8 +12,8 @@ import { GridPattern } from '@/components/GridPattern'
 import { Heading } from '@/components/Heading'
 import { ChatBubbleIcon } from '@/components/icons/ChatBubbleIcon'
 import { EnvelopeIcon } from '@/components/icons/EnvelopeIcon'
-import { UserIcon } from '@/components/icons/UserIcon'
 import { UsersIcon } from '@/components/icons/UsersIcon'
+import {ProcessIcon} from "@/components/icons/ProcessIcon";
 
 interface Resource {
   href: string
@@ -28,11 +28,10 @@ interface Resource {
 
 const resources: Array<Resource> = [
   {
-    href: '/contacts',
-    name: 'Contacts',
-    description:
-      'Learn about the contact model and how to create, retrieve, update, delete, and list contacts.',
-    icon: UserIcon,
+    href: '/business-process',
+    name: 'Business Processes',
+    description: 'Learn about the process model and how you can manage Business processes.',
+    icon: ProcessIcon,
     pattern: {
       y: 16,
       squares: [
@@ -113,7 +112,7 @@ function ResourcePattern({
         />
       </div>
       <motion.div
-        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-brand-400/40 to-brand-600/40 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-brand-600/30 dark:to-brand-400/30"
+        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-brand-300/40 to-brand-600/40 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-brand-600/30 dark:to-brand-300/30"
         style={style}
       />
       <motion.div
