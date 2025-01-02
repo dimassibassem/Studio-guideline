@@ -26,6 +26,19 @@ export default {
     },
     typography: typographyStyles,
     extend: {
+      animation: {
+        'meteor-effect': 'meteor 5s linear infinite',
+      },
+      keyframes: {
+        meteor: {
+          '0%': { transform: 'rotate(215deg) translateX(0)', opacity: '1' },
+          '70%': { opacity: '1' },
+          '100%': {
+            transform: 'rotate(215deg) translateX(-500px)',
+            opacity: '0',
+          },
+        },
+      },
       boxShadow: {
         glow: '0 0 4px rgb(0 0 0 / 0.1)',
       },
@@ -46,8 +59,8 @@ export default {
           300: '#78b8d3',
           400: '#a5b4fc',
           600: '#4c4d84',
-        }
-      }
+        },
+      },
     },
   },
   plugins: [typographyPlugin, headlessuiPlugin],
