@@ -60,7 +60,6 @@ export function Row({
   children: React.ReactNode
   className?: string
 }) {
-  console.log(className)
   return (
     <div
       className={clsx(

@@ -19,14 +19,14 @@ function PageLink({
   previous?: boolean
 }) {
   return (
-    <Link href={page.href} className="group relative w-64">
+    <Link href={page.href} className="group relative h-full w-36 sm:w-36 md:w-48 lg:w-64">
       {/* Hover Effect Layer */}
       <div className="absolute h-full w-full bg-gradient-to-tr from-blue-500 to-teal-500 opacity-0 blur-md transition-all duration-300 group-hover:scale-105 group-hover:opacity-100"></div>
 
       {/* Main Content */}
       <div
         className={clsx(
-          'relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border bg-white/80 p-4 shadow-sm transition-all duration-300 dark:bg-zinc-900/80',
+          'relative flex h-full flex-col justify-evenly gap-4 overflow-hidden rounded-2xl border bg-white/80 p-4 shadow-sm transition-all duration-300 dark:bg-zinc-900/80',
           previous ? 'items-start' : 'items-end',
         )}
       >
