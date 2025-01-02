@@ -1,0 +1,37 @@
+import {ImagePreview} from "../../components/ImagePreview";
+import {Col, Row} from "../../components/mdx";
+export const metadata = {
+    title: 'Authorization',
+    description: 'Authorization in Bankerise Studio.',
+}
+
+# Authorization
+
+Bankerise Studio supports the authorization process as any other application in the Bankerise platform.
+
+The application now uses the Bankerise platform’s authorization process
+to ensure that users have the correct permissions to access and manage the modeler.
+
+
+<Row className="items-center">
+    <Col className="flex justify-center items-center text-center">
+        Enable this feature in the backoffice by selecting the application and giving the modeler manage permission.
+    </Col>
+    <Col className="flex justify-center items-center">
+        <ImagePreview src="/images/modeler_manage.png" alt="Modeler Manage" />
+    </Col>
+</Row>
+<Row className="items-center">
+    <Col className="flex justify-center items-center">
+        <ImagePreview src="/images/form_manage.png" alt="Form Manage" />
+    </Col>
+    <Col className="flex justify-center items-center text-center">
+        Enable this feature in the backoffice by selecting the application and giving the form manage permission.
+    </Col>
+</Row>
+
+
+While the user is logged in, the application checks the user’s permissions to access the modeler and its features.
+If the user does not have the required permissions, the application will display this message.
+
+<ImagePreview src="/images/forbidden.png" alt="Authorization Error"/>

@@ -1,0 +1,50 @@
+import {ImagePreview} from "../../../components/ImagePreview";
+import {Col, Note, Row} from "../../../components/mdx";
+import {FlowableConceptsTable} from "./_components";
+export const metadata = {
+    title: 'Modeler',
+    description: 'Learn how to create and manage processes in Bankerise Studio.'
+}
+
+# Modeler
+
+The Flowable Modeler is a graphical user interface (GUI) tool provided by the Flowable BPMN platform. It allows users to visually design and edit BPMN diagrams. The Flowable Modeler offers intuitive creation, modification, and management of these process models.
+
+The Modeler is a web-based application that can be accessed through a web browser. It is designed to be user-friendly and intuitive, allowing users to quickly create and edit BPMN diagrams without the need for extensive technical knowledge.
+
+## Getting started {{ anchor: true }}
+
+<Row>
+    <Col>
+        The Modeler interface consists of several components, including the main canvas area where you can design your
+        BPMN diagrams, a palette of BPMN elements that you can drag and drop onto the canvas, and various tools and
+        options for editing and managing your diagrams.
+
+        The Modeler also provides features such as zooming in and out, undo and redo functionality. You can check the
+        editor toolbar for more options.
+
+        <ImagePreview
+            src="/images/processes/modeler-toolbar.png" alt="Modeler toolbar"/>
+
+        in the left sidebar, you can find the BPMN elements that you can drag and drop onto the canvas to create your
+        BPMN diagrams.
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/processes/modeler.png" alt="Modeler"/>
+    </Col>
+</Row>
+    <Note>
+  There are many changes in the Modeler interface compared to the flowable version. There are new features and improvements like the new [Message center task](#) and how [Forms](#) are managed.
+</Note>
+
+## BPMN elements {{ anchor: true }}
+
+The Modeler provides a wide range of BPMN elements that you can use to create your BPMN diagrams. These elements represent different types of tasks, gateways, events, and other components that are used in BPMN diagrams.
+
+You can drag and drop these elements onto the canvas to create your BPMN diagrams. You can also connect these elements using sequence flows to define the flow of the process.
+
+These are some of the BPMN elements that you can use in the Modeler:
+
+<FlowableConceptsTable />
+

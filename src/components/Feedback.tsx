@@ -2,6 +2,8 @@
 
 import { forwardRef, useState } from 'react'
 import { Transition } from '@headlessui/react'
+import { usePathname } from 'next/navigation'
+import FingerprintJS from '@fingerprintjs/fingerprintjs'
 import clsx from 'clsx'
 
 function CheckIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -72,7 +74,27 @@ const FeedbackThanks = forwardRef<
     >
       <div className="flex items-center gap-3 rounded-full bg-indigo-50/50 py-1 pl-1.5 pr-3 text-sm text-indigo-900 ring-1 ring-inset ring-indigo-500/20 dark:bg-indigo-500/5 dark:text-indigo-200 dark:ring-indigo-500/30">
         <CheckIcon className="h-5 w-5 flex-none fill-indigo-500 stroke-white dark:fill-indigo-200/20 dark:stroke-indigo-200" />
-        Thanks for your feedback!
+        {props.children || 'Thanks for your feedback!'}
+      </div>
+    </div>
+  )
+})
+
+const FeedbackError = forwardRef<
+  React.ElementRef<'div'>,
+  React.ComponentPropsWithoutRef<'div'>
+>(function FeedbackError({ className, ...props }, ref) {
+  return (
+    <div
+      {...props}
+      ref={ref}
+      className={clsx(
+        className,
+        'absolute inset-0 flex justify-center md:justify-start',
+      )}
+    >
+      <div className="flex items-center gap-3 rounded-full bg-red-50/50 px-3 py-1 text-sm text-red-900 ring-1 ring-inset ring-red-500/20 dark:bg-red-500/5 dark:text-red-200 dark:ring-red-500/30">
+        {props.children || 'An error occurred'}
       </div>
     </div>
   )
@@ -80,26 +102,70 @@ const FeedbackThanks = forwardRef<
 
 export function Feedback() {
   let [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [isHelpfulPercentage, setIsHelpfulPercentage] = useState<string | null>(
+    null,
+  )
+  const pathname = usePathname()
 
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    // event.nativeEvent.submitter.dataset.response
-    // => "yes" or "no"
+    try {
+      // Initialize FingerprintJS and get the device ID
+      const fp = await FingerprintJS.load()
+      const result = await fp.get()
+      const deviceId = result.visitorId // This gives a unique device identifier
 
-    setSubmitted(true)
+      // Send the request
+      const res = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          pathname,
+          // @ts-ignore
+          response: event.nativeEvent.submitter.dataset.response,
+          deviceId, // Send the generated device ID with the feedback
+        }),
+      })
+
+      // Check if the response is okay and parse the response body
+      const data = await res.json()
+
+      if (!res.ok || res.status >= 400) {
+        setError(data.error || 'An unknown error occurred')
+      } else {
+        setIsHelpfulPercentage(data.isHelpfulPercentage)
+        setSubmitted(true)
+      }
+    } catch (error) {
+      // Handle any errors that occurred during the request
+      console.error('Error submitting feedback:', error)
+      setError('Failed to submit feedback')
+    }
   }
 
   return (
     <div className="relative h-8">
-      <Transition show={!submitted}>
+      <Transition show={!submitted && !error}>
         <FeedbackForm
           className="duration-300 data-[leave]:pointer-events-none data-[closed]:opacity-0"
           onSubmit={onSubmit}
         />
       </Transition>
-      <Transition show={submitted}>
-        <FeedbackThanks className="delay-150 duration-300 data-[closed]:opacity-0" />
+      <Transition show={!error && submitted}>
+        <FeedbackThanks className="delay-150 duration-300 data-[closed]:opacity-0">
+          {isHelpfulPercentage
+            ? `Thanks for your feedback! ${isHelpfulPercentage}% found this page helpful.`
+            : undefined}
+        </FeedbackThanks>
+      </Transition>
+      <Transition show={!!error}>
+        <FeedbackError className="delay-150 duration-300 data-[closed]:opacity-0">
+          {error}
+        </FeedbackError>
       </Transition>
     </div>
   )

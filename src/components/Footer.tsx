@@ -45,7 +45,6 @@ function PageNavigation() {
   if (currentPageIndex === -1) {
     return null
   }
-
   let previousPage = allPages[currentPageIndex - 1]
   let nextPage = allPages[currentPageIndex + 1]
 
@@ -120,17 +119,6 @@ function SmallPrint() {
       <p className="text-xs text-zinc-600 dark:text-zinc-400">
         &copy; Copyright {new Date().getFullYear()}. All rights reserved.
       </p>
-      <div className="flex gap-4">
-        <SocialLink href="#" icon={XIcon}>
-          Follow us on X
-        </SocialLink>
-        <SocialLink href="#" icon={GitHubIcon}>
-          Follow us on GitHub
-        </SocialLink>
-        <SocialLink href="#" icon={DiscordIcon}>
-          Join our Discord server
-        </SocialLink>
-      </div>
     </div>
   )
 }

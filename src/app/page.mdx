@@ -1,17 +1,15 @@
-import { Guides } from '@/components/Guides'
-import { Resources } from '@/components/Resources'
-import { HeroPattern } from '@/components/HeroPattern'
+import {Guides} from '@/components/Guides'
+import {Resources} from '@/components/Resources'
 
 export const metadata = {
-  title: 'Bankerise Studio Documentation',
-  description: 'Learn how to use Bankerise Studio to build and deploy your own financial applications.',
+    title: 'Bankerise Studio Documentation',
+    description: 'Learn how to use Bankerise Studio to build and deploy your own financial applications.',
 }
 
 export const sections = [
-  { title: 'Guides', id: 'guides' }
+    {title: 'Guides', id: 'guides'},
+    {title: 'Resources', id: 'resources'},
 ]
-
-<HeroPattern />
 
 # Bankerise Studio Documentation
 
@@ -22,16 +20,7 @@ and it is designed to be a user-friendly and intuitive tool for creating and man
 
 Significant changes have been implemented to enhance functionality, security, and user experience.
 
-<div className="not-prose mb-16 mt-6 flex gap-3">
-  <Button href="/quickstart" arrow="right">
-    <>Quickstart</>
-  </Button>
-</div>
 
-## Getting started {{ anchor: false }}
+<Guides/>
 
-To get started with Bankerise Studio, you can follow the guides below.
-
-<Guides />
-
-<Resources />
+<Resources/>

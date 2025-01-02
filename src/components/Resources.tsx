@@ -10,10 +10,12 @@ import {
 
 import { GridPattern } from '@/components/GridPattern'
 import { Heading } from '@/components/Heading'
-import { ChatBubbleIcon } from '@/components/icons/ChatBubbleIcon'
 import { EnvelopeIcon } from '@/components/icons/EnvelopeIcon'
-import { UsersIcon } from '@/components/icons/UsersIcon'
-import {ProcessIcon} from "@/components/icons/ProcessIcon";
+import { ProcessIcon } from '@/components/icons/ProcessIcon'
+import { FormIcon } from '@/components/icons/FormIcon'
+import { TableIcon } from '@/components/icons/TableIcon'
+import { FolderIcon } from '@/components/icons/FolderIcon'
+import React from "react";
 
 interface Resource {
   href: string
@@ -30,7 +32,8 @@ const resources: Array<Resource> = [
   {
     href: '/business-process',
     name: 'Business Processes',
-    description: 'Learn about the process model and how you can manage Business processes.',
+    description:
+      'Learn about the process model and how you can manage Business processes.',
     icon: ProcessIcon,
     pattern: {
       y: 16,
@@ -41,11 +44,11 @@ const resources: Array<Resource> = [
     },
   },
   {
-    href: '/conversations',
-    name: 'Conversations',
+    href: '/forms',
+    name: 'Forms',
     description:
-      'Learn about the conversation model and how to create, retrieve, update, delete, and list conversations.',
-    icon: ChatBubbleIcon,
+      'Learn about the form model and how to create, retrieve, update, delete, and list forms.',
+    icon: FormIcon,
     pattern: {
       y: -6,
       squares: [
@@ -55,11 +58,11 @@ const resources: Array<Resource> = [
     },
   },
   {
-    href: '/messages',
-    name: 'Messages',
+    href: '/decisions',
+    name: 'Decisions',
     description:
-      'Learn about the message model and how to create, retrieve, update, delete, and list messages.',
-    icon: EnvelopeIcon,
+      'Learn about the decision model and how to create, retrieve, update, delete, and list decisions.',
+    icon: TableIcon,
     pattern: {
       y: 32,
       squares: [
@@ -69,14 +72,28 @@ const resources: Array<Resource> = [
     },
   },
   {
-    href: '/groups',
-    name: 'Groups',
+    href: '/apps',
+    name: 'Apps',
     description:
-      'Learn about the group model and how to create, retrieve, update, delete, and list groups.',
-    icon: UsersIcon,
+      'Learn about the app model and how to create, retrieve, update, delete, and list apps.',
+    icon: FolderIcon,
     pattern: {
       y: 22,
       squares: [[0, 1]],
+    },
+  },
+  {
+    href: '/message-center',
+    name: 'Message Center',
+    description:
+      'Learn about the message center model and how to create, retrieve, update, delete, and list messages.',
+    icon: EnvelopeIcon,
+    pattern: {
+      y: 12,
+      squares: [
+        [0, 2],
+        [1, 3],
+      ],
     },
   },
 ]
@@ -112,7 +129,7 @@ function ResourcePattern({
         />
       </div>
       <motion.div
-        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-brand-300/40 to-brand-600/40 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-brand-600/30 dark:to-brand-300/30"
+        className="from-brand-300/40 dark:to-brand-300/30 absolute inset-0 rounded-2xl bg-gradient-to-r to-brand-600/40 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-brand-600/30"
         style={style}
       />
       <motion.div

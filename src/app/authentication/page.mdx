@@ -1,41 +1,27 @@
+import {ImagePreview} from "../../components/ImagePreview";
 export const metadata = {
-  title: 'Authentication',
-  description:
-    'In this guide, we’ll look at how authentication works. Protocol offers two ways to authenticate your API requests: Basic authentication and OAuth2 with a token.',
+    title: 'Authentication',
+    description: 'Authentication in Bankerise Studio.',
 }
 
 # Authentication
 
-You'll need to authenticate your requests to access any of the endpoints in the Protocol API. In this guide, we'll look at how authentication works. Protocol offers two ways to authenticate your API requests: Basic authentication and OAuth2 with a token — OAuth2 is the recommended way. {{ className: 'lead' }}
+Authentication in Bankerise Studio is handled by the Keycloak Identity and Access Management solution.
+Bankerise Studio has been integrated into the Bankerise platform as an application.
+Like other applications within the platform, it seamlessly incorporates the authentication process,
+leveraging Keycloak for streamlined authentication processes.
 
-## Basic authentication
+the application now supports authentication with or without OTP, providing a secure and flexible login experience.
 
-With basic authentication, you use your username and password to authenticate your HTTP requests. Unless you have a very good reason, you probably shouldn't use basic auth. Here's how to authenticate using cURL:
+The management of the OTP is done by the backoffice,
+the user can enable or disable the OTP in the login process specification of the Bankerise studio application.
 
-```bash {{ title: 'Example request with basic auth' }}
-curl https://api.protocol.chat/v1/conversations \
-  -u username:password
-```
+<ImagePreview
+    src="/images/authentication-config.png" alt="authentication config"/>
 
-Please don't commit your Protocol password to GitHub!
+his is an example of the OTP validation modal that appears when the user has OTP enabled and tries to log in.
 
-## OAuth2 with bearer token
+<ImagePreview
+    src="/images/otp-example.png" alt="otp validation"/>
 
-The recommended way to authenticate with the Protocol API is by using OAuth2. When establishing a connection using OAuth2, you will need your access token — you will find it in the [Protocol dashboard](#) under API settings. Here's how to add the token to the request header using cURL:
 
-```bash {{ title: 'Example request with bearer token' }}
-curl https://api.protocol.chat/v1/conversations \
-  -H "Authorization: Bearer {token}"
-```
-
-Always keep your token safe and reset it if you suspect it has been compromised.
-
-## Using an SDK
-
-If you use one of our official SDKs, you won't have to worry about any of the above — fetch your access token from the [Protocol dashboard](#) under API settings, and the client library will take care of the rest. All the client libraries use OAuth2 behind the scenes.
-
-<div className="not-prose">
-  <Button href="/sdks" variant="text" arrow="right">
-    <>Check out our list of first-party SDKs</>
-  </Button>
-</div>
