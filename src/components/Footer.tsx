@@ -5,6 +5,9 @@ import { usePathname } from 'next/navigation'
 
 import { Button } from '@/components/Button'
 import { navigation } from '@/components/Navigation'
+import { Meteors } from '@/components/Meteros'
+
+import clsx from 'clsx'
 
 function PageLink({
   label,
@@ -16,24 +19,35 @@ function PageLink({
   previous?: boolean
 }) {
   return (
-    <>
-      <Button
-        href={page.href}
-        aria-label={`${label}: ${page.title}`}
-        variant="secondary"
-        arrow={previous ? 'left' : 'right'}
+    <Link href={page.href} className="group relative w-64">
+      {/* Hover Effect Layer */}
+      <div className="absolute h-full w-full bg-gradient-to-tr from-blue-500 to-teal-500 opacity-0 blur-md transition-all duration-300 group-hover:scale-105 group-hover:opacity-100"></div>
+
+      {/* Main Content */}
+      <div
+        className={clsx(
+          'relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border bg-white/80 p-4 shadow-sm transition-all duration-300 dark:bg-zinc-900/80',
+          previous ? 'items-start' : 'items-end',
+        )}
       >
-        {label}
-      </Button>
-      <Link
-        href={page.href}
-        tabIndex={-1}
-        aria-hidden="true"
-        className="text-base font-semibold text-zinc-900 transition hover:text-zinc-600 dark:text-white dark:hover:text-zinc-300"
-      >
-        {page.title}
-      </Link>
-    </>
+        <div>
+          <Button
+            aria-label={`${label}: ${page.title}`}
+            variant="secondary"
+            arrow={previous ? 'left' : 'right'}
+          >
+            {label}
+          </Button>
+        </div>
+
+        <div className="text-base font-semibold transition">{page.title}</div>
+
+        {/* Meaty part - Meteor effect */}
+        <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <Meteors number={20} />
+        </div>
+      </div>
+    </Link>
   )
 }
 

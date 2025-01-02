@@ -37,5 +37,15 @@
         :root.dark ::-webkit-scrollbar-track {
             background-color: theme('colors.zinc.800');
         }
+
+        ::selection {
+            background-color: theme('colors.brand.400');
+        }
+
+        :root.dark ::selection {
+            background-color: theme('colors.brand.600');
+        }
+
+
     }
 }

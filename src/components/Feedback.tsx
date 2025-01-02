@@ -1,10 +1,11 @@
 'use client'
 
-import { forwardRef, useState } from 'react'
+import React, { forwardRef } from 'react'
 import { Transition } from '@headlessui/react'
 import { usePathname } from 'next/navigation'
 import FingerprintJS from '@fingerprintjs/fingerprintjs'
 import clsx from 'clsx'
+import { useMutation } from '@tanstack/react-query'
 
 function CheckIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -101,70 +102,76 @@ const FeedbackError = forwardRef<
 })
 
 export function Feedback() {
-  let [submitted, setSubmitted] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [isHelpfulPercentage, setIsHelpfulPercentage] = useState<string | null>(
-    null,
-  )
   const pathname = usePathname()
 
-  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  // Define the mutation function
+  const mutationFn = async (response: string) => {
+    const fp = await FingerprintJS.load()
+    const result = await fp.get()
+    const deviceId = result.visitorId
 
-    try {
-      // Initialize FingerprintJS and get the device ID
-      const fp = await FingerprintJS.load()
-      const result = await fp.get()
-      const deviceId = result.visitorId // This gives a unique device identifier
+    const res = await fetch('/api/feedback', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        pathname,
+        response,
+        deviceId,
+      }),
+    })
 
-      // Send the request
-      const res = await fetch('/api/feedback', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          pathname,
-          // @ts-ignore
-          response: event.nativeEvent.submitter.dataset.response,
-          deviceId, // Send the generated device ID with the feedback
-        }),
-      })
-
-      // Check if the response is okay and parse the response body
-      const data = await res.json()
-
-      if (!res.ok || res.status >= 400) {
-        setError(data.error || 'An unknown error occurred')
-      } else {
-        setIsHelpfulPercentage(data.isHelpfulPercentage)
-        setSubmitted(true)
-      }
-    } catch (error) {
-      // Handle any errors that occurred during the request
-      console.error('Error submitting feedback:', error)
-      setError('Failed to submit feedback')
+    if (!res.ok) {
+      // If the status is 400 or any other non-ok status, throw an error
+      const errorData = await res.json()
+      throw new Error(errorData.error || 'An unknown error occurred')
     }
+
+    return res.json()
+  }
+
+  // Use the useMutation hook
+  const { data, status, mutate, error, isPending } = useMutation({
+    mutationFn,
+  })
+
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const response = (event.nativeEvent as any).submitter.dataset.response
+    mutate(response)
   }
 
   return (
     <div className="relative h-8">
-      <Transition show={!submitted && !error}>
+      <Transition show={status === 'idle'}>
         <FeedbackForm
           className="duration-300 data-[leave]:pointer-events-none data-[closed]:opacity-0"
           onSubmit={onSubmit}
         />
       </Transition>
-      <Transition show={!error && submitted}>
+      <Transition show={isPending}>
+        <div className="flex space-x-1">
+          <span className="sr-only">Loading...</span>
+          <div className="h-4 w-4 animate-bounce rounded-full bg-brand-400 [animation-delay:-0.3s] dark:bg-brand-600"></div>
+          <div className="h-4 w-4 animate-bounce rounded-full bg-brand-400 [animation-delay:-0.15s] dark:bg-brand-600"></div>
+          <div className="h-4 w-4 animate-bounce rounded-full bg-brand-400 dark:bg-brand-600"></div>
+        </div>
+      </Transition>
+      <Transition show={status === 'success'}>
         <FeedbackThanks className="delay-150 duration-300 data-[closed]:opacity-0">
-          {isHelpfulPercentage
-            ? `Thanks for your feedback! ${isHelpfulPercentage}% found this page helpful.`
-            : undefined}
+          {data?.isHelpfulPercentage ? (
+            <span>
+              Thanks for your feedback!{' '}
+              <span className="font-medium">{data.isHelpfulPercentage}%</span>{' '}
+              of users found this helpful.
+            </span>
+          ) : undefined}
         </FeedbackThanks>
       </Transition>
-      <Transition show={!!error}>
+      <Transition show={status === 'error'}>
         <FeedbackError className="delay-150 duration-300 data-[closed]:opacity-0">
-          {error}
+          {error?.message || 'An error occurred'}
         </FeedbackError>
       </Transition>
     </div>

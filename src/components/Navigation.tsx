@@ -115,7 +115,7 @@ function VisibleSectionHighlight({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.2 } }}
       exit={{ opacity: 0 }}
-      className="absolute inset-x-0 top-0 bg-zinc-800/2.5 will-change-transform dark:bg-white/2.5"
+      className="absolute inset-x-0 top-0 bg-brand-300/10 will-change-transform dark:bg-brand-600/35"
       style={{ borderRadius: 8, height, top }}
     />
   )
@@ -136,7 +136,7 @@ function ActivePageMarker({
   return (
     <motion.div
       layout
-      className="absolute left-2 h-6 w-px bg-indigo-500"
+      className="absolute left-2 h-6 w-px bg-brand-600 dark:bg-brand-300"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.2 } }}
       exit={{ opacity: 0 }}
