@@ -42,10 +42,30 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    return new NextResponse(JSON.stringify(feedback), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
+    // Retrieve and calculate the percentage of "true" responses for the current pathname
+    const totalResponses = await prisma.feedback.count({
+      where: {
+        pathname,
+      },
     })
+
+    const trueResponses = await prisma.feedback.count({
+      where: {
+        pathname,
+        response: true,
+      },
+    })
+
+    const percentageTrue =
+      totalResponses > 0 ? (trueResponses / totalResponses) * 100 : 0
+
+    // Response object
+    return new NextResponse(
+      JSON.stringify({
+          isHelpfulPercentage: percentageTrue.toFixed(2),
+      }),
+      { status: 200, headers: { 'Content-Type': 'application/json' } },
+    )
   } catch (error) {
     const errorMessage = 'An unknown error occurred'
     return new NextResponse(JSON.stringify({ error: errorMessage }), {

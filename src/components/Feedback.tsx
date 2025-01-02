@@ -74,7 +74,7 @@ const FeedbackThanks = forwardRef<
     >
       <div className="flex items-center gap-3 rounded-full bg-indigo-50/50 py-1 pl-1.5 pr-3 text-sm text-indigo-900 ring-1 ring-inset ring-indigo-500/20 dark:bg-indigo-500/5 dark:text-indigo-200 dark:ring-indigo-500/30">
         <CheckIcon className="h-5 w-5 flex-none fill-indigo-500 stroke-white dark:fill-indigo-200/20 dark:stroke-indigo-200" />
-        Thanks for your feedback!
+        {props.children || 'Thanks for your feedback!'}
       </div>
     </div>
   )
@@ -103,6 +103,9 @@ const FeedbackError = forwardRef<
 export function Feedback() {
   let [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [isHelpfulPercentage, setIsHelpfulPercentage] = useState<string | null>(
+    null,
+  )
   const pathname = usePathname()
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -134,6 +137,7 @@ export function Feedback() {
       if (!res.ok || res.status >= 400) {
         setError(data.error || 'An unknown error occurred')
       } else {
+        setIsHelpfulPercentage(data.isHelpfulPercentage)
         setSubmitted(true)
       }
     } catch (error) {
@@ -152,7 +156,11 @@ export function Feedback() {
         />
       </Transition>
       <Transition show={!error && submitted}>
-        <FeedbackThanks className="delay-150 duration-300 data-[closed]:opacity-0" />
+        <FeedbackThanks className="delay-150 duration-300 data-[closed]:opacity-0">
+          {isHelpfulPercentage
+            ? `Thanks for your feedback! ${isHelpfulPercentage}% found this page helpful.`
+            : undefined}
+        </FeedbackThanks>
       </Transition>
       <Transition show={!!error}>
         <FeedbackError className="delay-150 duration-300 data-[closed]:opacity-0">
