@@ -1,6 +1,6 @@
 'use client'
 
-import React, { forwardRef } from 'react'
+import React from 'react'
 import { Transition } from '@headlessui/react'
 import { usePathname } from 'next/navigation'
 import FingerprintJS from '@fingerprintjs/fingerprintjs'
@@ -34,14 +34,14 @@ function FeedbackButton(
   )
 }
 
-const FeedbackForm = forwardRef<
-  React.ElementRef<'form'>,
-  React.ComponentPropsWithoutRef<'form'>
->(function FeedbackForm({ onSubmit, className, ...props }, ref) {
+function FeedbackForm({
+  onSubmit,
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'form'>) {
   return (
     <form
       {...props}
-      ref={ref}
       onSubmit={onSubmit}
       className={clsx(
         className,
@@ -58,48 +58,48 @@ const FeedbackForm = forwardRef<
       </div>
     </form>
   )
-})
+}
 
-const FeedbackThanks = forwardRef<
-  React.ElementRef<'div'>,
-  React.ComponentPropsWithoutRef<'div'>
->(function FeedbackThanks({ className, ...props }, ref) {
+function FeedbackThanks({
+  className,
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div
       {...props}
-      ref={ref}
       className={clsx(
         className,
-        'absolute inset-0 flex justify-center md:justify-start',
+        'absolute flex justify-center md:justify-start',
       )}
     >
-      <div className="flex items-center gap-3 rounded-full bg-indigo-50/50 py-1 pl-1.5 pr-3 text-sm text-indigo-900 ring-1 ring-inset ring-indigo-500/20 dark:bg-indigo-500/5 dark:text-indigo-200 dark:ring-indigo-500/30">
+      <div className="flex items-center gap-3 rounded-full bg-indigo-50/50 p-1.5 text-sm text-indigo-900 ring-1 ring-inset ring-indigo-500/20 dark:bg-indigo-500/5 dark:text-indigo-200 dark:ring-indigo-500/30">
         <CheckIcon className="h-5 w-5 flex-none fill-indigo-500 stroke-white dark:fill-indigo-200/20 dark:stroke-indigo-200" />
-        {props.children || 'Thanks for your feedback!'}
+        {children || 'Thanks for your feedback!'}
       </div>
     </div>
   )
-})
+}
 
-const FeedbackError = forwardRef<
-  React.ElementRef<'div'>,
-  React.ComponentPropsWithoutRef<'div'>
->(function FeedbackError({ className, ...props }, ref) {
+function FeedbackError({
+  className,
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div
       {...props}
-      ref={ref}
       className={clsx(
         className,
         'absolute inset-0 flex justify-center md:justify-start',
       )}
     >
       <div className="flex items-center gap-3 rounded-full bg-red-50/50 px-3 py-1 text-sm text-red-900 ring-1 ring-inset ring-red-500/20 dark:bg-red-500/5 dark:text-red-200 dark:ring-red-500/30">
-        {props.children || 'An error occurred'}
+        {children || 'An error occurred'}
       </div>
     </div>
   )
-})
+}
 
 export function Feedback() {
   const pathname = usePathname()
@@ -151,7 +151,7 @@ export function Feedback() {
         />
       </Transition>
       <Transition show={isPending}>
-        <div className="flex space-x-1">
+        <div className="flex items-center justify-center space-x-1">
           <span className="sr-only">Loading...</span>
           <div className="h-4 w-4 animate-bounce rounded-full bg-brand-400 [animation-delay:-0.3s] dark:bg-brand-600"></div>
           <div className="h-4 w-4 animate-bounce rounded-full bg-brand-400 [animation-delay:-0.15s] dark:bg-brand-600"></div>
