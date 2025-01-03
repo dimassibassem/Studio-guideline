@@ -1,0 +1,61 @@
+import {ImagePreview} from "../../../components/ImagePreview";
+import {Col, Row} from "../../../components/mdx";
+import Image from "next/image";
+
+export const metadata = {
+    title: 'Decisions List',
+    description: 'Learn how to create and manage decision tables in Bankerise Studio.',
+}
+
+
+# Decision tables list
+
+In Bankerise Studio, you can create and manage decision tables. Decision tables are used to define rules that can be used in decisions and cases.
+
+
+<Row>
+    <Col>
+
+        The Decisions list page displays all the decisions that have been created. You can see the decision name,
+        version, and the date it was last modified.
+
+        You can use the search bar to search for a specific decision. You can also filter the decisions alphabetically,
+        by the date they were last modified or by oldest first.
+
+        Clicking on a decision will take you to the Decisions preview page, where you can see the decision in more
+        detail.
+
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/decisions/decisions-list.png" alt="Decisions-list"/>
+    </Col>
+</Row>
+
+## Actions {{ anchor: true }}
+
+<div className="flex flex-col">
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/decisions/actions/create-decision.png"
+            width={150}
+            height={48}
+            alt="create decision"
+        />
+        Click the create decision table button at the top of the page to open a modal where you can create a new decision.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/decisions/actions/import-decision.png"
+            width={150}
+            height={48}
+            alt="import decision"
+        />
+
+        Click the import decision table button at the top of the page to open a modal where you can import a decision
+    </div>
+
+</div>

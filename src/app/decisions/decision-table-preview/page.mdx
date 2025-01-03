@@ -1,0 +1,97 @@
+import {ImagePreview} from "../../../components/ImagePreview";
+import {Col, Row} from "../../../components/mdx";
+import Image from "next/image";
+
+export const metadata = {
+    title: 'Decision table preview',
+    description: 'Learn how to create and manage decision tables in Bankerise Studio.',
+}
+
+
+# Decision table preview
+After clicking on a decision table in the decision tables list, you will be taken to the decision table preview page. Here you can see the decision table in more detail.
+
+<Row>
+    <Col>
+        <ImagePreview
+            src="/images/decisions/decision-preview.png" alt="Decision table preview"/>
+    </Col>
+    <Col>
+
+        The Decision table preview page displays the decision table in more detail. You can see the decision table name,
+        version, key and the
+        date it was last modified.
+
+        You can also see the decision table preview image, which shows the decision table fields .
+
+        You can use the buttons at the top of the page to edit the decision table, view the decision table history, or
+        delete the
+        decision table.
+    </Col>
+</Row>
+
+## Actions {{ anchor: true }}
+
+<div className="flex flex-col">
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/processes/actions/preview-actions-modify.png"
+            width={36}
+            height={36}
+            alt="modify decision table"
+        />
+        Click the edit button at the top of the page to open a modal where you can modify the decision table name, key,
+        and
+        description.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/processes/actions/preview-actions-duplicate.png"
+            width={36}
+            height={36}
+            alt="duplicate decision table"
+        />
+
+        Click the duplicate button at the top of the page to open a modal where you can create a copy of the decision
+        table.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/processes/actions/preview-actions-delete.png"
+            width={36}
+            height={36}
+            alt="delete decision table"
+        />
+
+        Click the delete button at the top of the page to open a modal and confirm the deletion of the decision table.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/processes/actions/preview-actions-download.png"
+            width={36}
+            height={36}
+            alt="download decision table"
+        />
+
+        Click the download button at the top of the page to save the decision table as a <code>.dmn</code> file.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/decisions/actions/decision-table-editor.png"
+            width={150}
+            height={48}
+            alt="open process editor"
+        />
+
+        Click the open editor button at the top of the page to navigate to the decision table editor.
+    </div>
+</div>

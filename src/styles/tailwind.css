@@ -17,21 +17,29 @@
 
     @layer utilities {
         ::-webkit-scrollbar {
-            width: 4px;
+            width: 5px;
             height: 8px;
         }
 
         ::-webkit-scrollbar-thumb {
-            background-color: theme(colors.brand.400);
+            background-image: linear-gradient(
+                    30deg,
+                    theme('colors.brand.400'),
+                    theme('colors.brand.300')
+            );
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-track {
-            background-color: theme(colors.zinc.100);
+            background-color: theme('colors.zinc.100');
         }
 
         :root.dark ::-webkit-scrollbar-thumb {
-            background-color: theme('colors.brand.600')
+            background-image: linear-gradient(
+                    30deg,
+                    theme('colors.brand.600'),
+                    theme('colors.brand.400')
+            );
         }
 
         :root.dark ::-webkit-scrollbar-track {
@@ -45,7 +53,6 @@
         :root.dark ::selection {
             background-color: theme('colors.brand.600');
         }
-
-
     }
+
 }

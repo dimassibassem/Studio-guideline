@@ -1,5 +1,5 @@
 import {ImagePreview} from "../../../components/ImagePreview";
-import {Col, Row} from "../../../components/mdx";
+import {Col, Note, Row} from "../../../components/mdx";
 
 export const metadata = {
     title: 'Form Builder',
@@ -35,7 +35,7 @@ Also, we can easily tailor forms to our workflows, making our processes more eff
 <Row>
     <Col>
         <ImagePreview
-            src="/images/forms/form-builder.gif" alt="Form Builder interaction"/>
+            src="/images/forms/form-builder.gif" unoptimized alt="Form Builder interaction"/>
     </Col>
     <Col>
         After dragging and dropping a form element onto the canvas, a modal will appear where you can configure the
@@ -81,7 +81,7 @@ mobile app.
     </Col>
     <Col>
         <ImagePreview
-            src="/images/forms/forms_policy.gif" alt="Policy secured form"/>
+            src="/images/forms/forms_policy.gif" unoptimized alt="Policy secured form"/>
     </Col>
 </Row>
 
@@ -110,3 +110,24 @@ These additional attributes can be customized to meet specific security requirem
 The expanded support for form policy additional data in JSON provides administrators with more flexibility and control over form-based authentication processes.
 By incorporating additional attributes such as Maximum OTP attempts, OTP length, and OTP resends, among others, the policies can be tailored to meet specific security requirements and adapt to varying use cases.
 This enhancement ensures that organizations can define and enforce security measures that align with their unique needs, enhancing the overall security posture of their applications and services.
+
+After configuring the form, you can save it by clicking the save button at the top of the page. A modal will
+appear where you can enter the form name, key, and description.
+<Row>
+    <Col>
+
+
+        <Note>
+            There is a checkbox asking if you want to publish the form, This allows users to
+            explicitly mark whether a form should be published upon saving.
+
+            While saving a form, the "Publish Form" checkbox appears.
+
+            If checked, the form is marked as published and becomes immediately available.
+        </Note>
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/forms/save-form-modal.png" unoptimized alt="save form modal"/>
+    </Col>
+</Row>
