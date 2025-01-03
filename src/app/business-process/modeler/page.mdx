@@ -35,7 +35,8 @@ The Modeler is a web-based application that can be accessed through a web browse
     </Col>
 </Row>
     <Note>
-  There are many changes in the Modeler interface compared to the flowable version. There are new features and improvements like the new [Message center task](#) and how [Forms](#) are managed.
+    There are many changes in the Modeler interface compared to the flowable version. There are new features and
+    improvements like the new [Message center task](#) and how [Forms](#) are managed.
 </Note>
 
 ## BPMN elements {{ anchor: true }}
@@ -46,5 +47,129 @@ You can drag and drop these elements onto the canvas to create your BPMN diagram
 
 These are some of the BPMN elements that you can use in the Modeler:
 
-<FlowableConceptsTable />
+<FlowableConceptsTable/>
+
+## Overview
+
+Business Process Modeling in Bankerise Studio allows you to visually design workflows using <span className="font-bold text-primary-500">BPMN</span>
+(Business Process Model and Notation).
+
+Here are some of the common BPMN elements you can use to create your business processes:
+
+### Start Event
+The Start Event marks the beginning of a business process. It signifies when a process is initiated, either manually or through an automated trigger.
+
+
+<Row>
+    <Col>
+        #### **How to Add a Start Event**
+        1. the Start Event is the first element in a process diagram, you will find it by default in the canvas, you can
+        drag and drop it from the palette.
+        2. Click on the Start Event to select it.
+        3. You can configure the Start Event properties by adding a name, documentation, and other properties in the
+        properties panel.
+        4. Start event must have a form reference to be able to start the process.
+
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/processes/start_event.gif" alt="Start Event"/>
+    </Col>
+</Row>
+
+
+### User Task
+The User Task is a task that requires human interaction to complete.
+It represents a task performed by a human user as part of a business process.
+
+<Row>
+
+    <Col>
+        <ImagePreview
+            src="/images/processes/user_task.gif" alt="User Task"/>
+    </Col>
+
+    <Col>
+        #### **How to Add a User Task**
+
+        1. **Drag the User Task Icon:**
+        Drag the **User Task** icon onto the canvas from the toolbox.
+
+        2. **Configure the User Task:**
+        Customize the task settings to fit your process requirements:
+        - **Assignee:** Assign the task to a user, role, or Bankerise group (e.g., branches or functions).
+        - **Form Reference:** Link a form that the user will interact with.
+        - **Application:** Link an application that the user will use to complete the task.
+        - **Due Date:** Set a due date for task completion (optional). *Due Date Format*: `PnDTnHnM` (e.g., P1DT2H30M)
+        represents 1 day, 2 hours, and 30 minutes.
+        3. **Connect the User Task:**
+        Link the User Task to other tasks or events in your workflow using sequence flows.
+
+    </Col>
+</Row>
+
+
+### Service Task
+The Service Task is a task that performs a service or invokes a service.
+It represents a task performed by a service or an external system as part of a business process.
+<Row>
+
+
+    <Col>
+        #### **How to Add a Service Task**
+
+        1. **Drag the Service Task Icon:**
+        Drag the **Service Task** icon onto the canvas from the toolbox.
+
+        2. **Configure the Service Task:**
+        TODO
+
+        3. **Connect the Service Task:**
+        Link the Service Task to other tasks or events in your workflow using sequence flows.
+
+    </Col>
+
+
+    <Col>
+
+
+    </Col>
+</Row>
+
+### Message Center Task
+
+The Message Center Task is a task that sends a message to a user or group of users.
+It represents a task that sends a message to a user or group of users as part of a business process.
+
+<Row>
+    <Col>
+        #### **How to Add a Message Center Task**
+
+        1. **Drag the Message Center Task Icon:**
+        Drag the **Message Center Task** icon onto the canvas from the toolbox.
+
+        2. **Configure the Message Center Task:**
+        Customize the task settings to fit your process requirements:
+        - **Message Type:** Select the message template to send (e.g., reset password, new offer).
+        - **Recipients:** Define the recipients of the message by adding corresponding phone numbers, email addresses or push notifications.
+        3. **Connect the Message Center Task:**
+        Link the Message Center Task to other tasks or events in your workflow using sequence flows.
+
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/processes/message_center_task.gif" alt="Message Center Task"/>
+    </Col>
+
+</Row>
+
+## **Best Practices**
+- **Name Your Tasks Clearly:** Use descriptive names for each task to improve readability and understanding.
+- **Validate Your Workflow:** Test your workflow thoroughly to ensure it behaves as expected.
+- **Keep it Simple:** Avoid overly complex workflows; break them into smaller subprocesses if necessary.
+
+
+
+
+
 
