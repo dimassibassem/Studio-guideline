@@ -171,7 +171,7 @@ export function Feedback() {
               <span>
                 Thanks for your feedback!{' '}
                 <span className="font-medium">{data.isHelpfulPercentage}%</span>{' '}
-                of users found this helpful.
+                of users found this page helpful.
               </span>
             ) : undefined}
           </FeedbackThanks>
@@ -185,7 +185,7 @@ export function Feedback() {
       <Link
         href={editUrl}
         target="_blank"
-        className="text-sm text-zinc-600 hover:underline dark:text-zinc-400"
+        className="max-w-fit text-sm text-zinc-600 hover:underline dark:text-zinc-400"
       >
         Edit this page
       </Link>
