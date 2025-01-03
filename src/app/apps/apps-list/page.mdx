@@ -1,0 +1,94 @@
+import {Col, Row} from "../../../components/mdx";
+import {ImagePreview} from "../../../components/ImagePreview";
+import Image from "next/image";
+
+export const metadata = {
+    title: 'Apps list',
+    description: 'Apps list in Bankerise Studio.',
+}
+
+# Apps list
+
+Here you can see all the apps that have been created.
+
+<Row>
+    <Col>
+
+        The Apps list page displays all the apps that have been created. You can see the app name,
+        version, and the date it was last modified.
+
+        You can use the search bar to search for a specific app. You can also filter the apps alphabetically,
+        by the date they were last modified or by oldest first.
+
+        Clicking on an app will take you to the App preview page, where you can see the app in more detail.
+
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/apps/apps-list.png" alt="Apps list"/>
+    </Col>
+</Row>
+
+
+## Actions {{ anchor: true }}
+
+<div className="flex flex-col">
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/apps/actions/create-app.png"
+            width={150}
+            height={48}
+            alt="create app"
+        />
+        Click the create app button at the top of the page to open a modal where you can create a new app.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/apps/actions/import-app.png"
+            width={150}
+            height={48}
+            alt="import app"
+        />
+
+        Click the import app button at the top of the page to open a modal where you can import an app
+    </div>
+
+</div>
+
+### Importing Applications
+
+<Row>
+    <Col>
+
+        In the import app modal, you can import an app from a file with the extension `.zip`.
+        During the process of importing an application, if the message-types folder is present in the application, the
+        message types will be imported to the message center with the specified templates same as all the process models
+        and decision tables.
+
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/apps/actions/import-app-modal.png" alt="Import app modal"/>
+    </Col>
+</Row>
+
+<Row>
+    <Col>
+        <ImagePreview
+            src="/images/apps/actions/import-app-summary.png" alt="Import app modal summary"/>
+    </Col>
+    <Col>
+        In case there are form conflicts, When importing an application, if a form with the same key and version already
+        exists in the system, a conflict will be detected, and the user will be prompted to pick a strategy to resolve
+        the conflict.
+
+        After choosing a strategy, a table will appears with a summary of how conflicts were resolved.
+
+    </Col>
+</Row>
+
+
+
