@@ -1,0 +1,132 @@
+import {Col, Note, Row} from "../../../components/mdx";
+import {ImagePreview} from "../../../components/ImagePreview";
+import Image from "next/image";
+
+
+export const metadata = {
+    title: 'Template editor',
+    description: 'Template editor in Bankerise Studio.',
+}
+
+# Template Editor
+
+The Template editor is where you can create and edit message templates in Bankerise Studio.
+
+<Row>
+    <Col>
+
+        The template editor allows you to create and edit message templates for various channels in multiple languages.
+
+        You can use `Freemarker` code to add dynamic content and subject to your message templates.
+
+        As you type, the editor provides auto-completion for Freemarker syntax and schema variables. On the right side
+        of the editor, a live preview displays how your message template will appear.
+
+        On the left side, you'll find an object containing schema variables along with fake data, which you can use to
+        visualize how the final message will look.
+
+    </Col>
+
+    <Col>
+        <ImagePreview
+            src="/images/message-center/template-editor.png" alt="Template editor"/>
+    </Col>
+
+</Row>
+
+## Actions {{ anchor: true }}
+
+<div className="flex flex-col">
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/freemarker-methods.png"
+            width={48}
+            height={48}
+            alt="Freemarker methods"
+        />
+        Click the `Freemarker Methods` button to open a modal where you can see all the available Freemarker methods
+        that can be used in your message template editor to manipulate data.
+    </div>
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/format-code.png"
+            width={48}
+            height={48}
+            alt="format code"
+        />
+        Click the `Format Code` button to format the code in the message template editor.
+    </div>
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/code-view.png"
+            width={48}
+            height={48}
+            alt="code view"
+        />
+        Click the `Code` button to switch to the code view of the message template.
+    </div>
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/code-preview-view.png"
+            width={48}
+            height={48}
+            alt="code preview view"
+        />
+        Click the `Code + Preview` button to switch to a split view of the code and preview of the message template.
+    </div>
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/preview.png"
+            width={48}
+            height={48}
+            alt="preview"
+        />
+        Click the `Preview` button to switch to the preview view of the message template.
+    </div>
+
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/view-schema.png"
+            width={150}
+            height={48}
+            alt="view schema"
+        />
+        Click the View Schema button at the top to navigate to the schema view of the message template.
+    </div>
+    <Note>
+        The `View Schema` button is only available when the message template is locked and can't be edited.
+    </Note>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/edit-schema.png"
+            width={150}
+            height={48}
+            alt="edit schema"
+        />
+        Click the Edit Schema button at the top of the page to navigate to the schema editor to edit the message
+        template.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/save-template.png"
+            width={150}
+            height={48}
+            alt="save template"
+        />
+        Click the save button at the top of the page to save the message template.
+    </div>
+
+</div>
+
+

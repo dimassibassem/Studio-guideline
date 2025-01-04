@@ -1,0 +1,104 @@
+import {Col, Row} from "../../../components/mdx";
+import {ImagePreview} from "../../../components/ImagePreview";
+import Image from "next/image";
+
+export const metadata = {
+    title: 'Message Templates',
+    description: 'Message Templates in Bankerise Studio.',
+}
+
+# Message Templates
+<Row>
+    <Col>
+        The Message Templates page displays all the message templates that have been created.
+        A table displays the message templates grouped by category. You can search for a specific message template using
+        the search bar.
+
+        The displayed data is paginated, and you can navigate through the pages using the pagination controls.
+        Clicking on a message template will take you to the Message Template editor page, where you can see the message
+        and edit it.
+
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/message-center/message-templates.png" alt="Message Templates"/>
+    </Col>
+</Row>
+
+<Row>
+    <Col>
+
+        <ImagePreview
+            src="/images/message-center/actions/detailed-actions.png" alt="Message Templates Actions"/>
+    </Col>
+    <Col>
+
+        In the table there is `Actions` column where you can:
+        - See the message template
+        - Duplicate the message template
+        - Download the message template
+        - Delete the message template
+    </Col>
+</Row>
+
+You will find also in the table all available channels with a toggle to enable/disable the channel for the message template.
+
+The `Status` column shows the status of the message template, whether it is:
+
+- `Completed` when all channels are configured.
+- `Incomplete` when at least one channel is not configured.
+- `Empty` when no channel is configured.
+
+## Actions {{ anchor: true }}
+
+<div className="flex flex-col">
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/info.png"
+            width={48}
+            height={48}
+            alt="adapters info"
+        />
+        Click the info button at the top of the page to open a modal where you can see the message templates configured
+        adapters.
+    </div>
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/export.png"
+            width={48}
+            height={48}
+            alt="export message templates"
+        />
+        Click the export button at the top of the page to export the message templates with <code>.zip</code> format
+        including the message templates and all it configurations.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/import-template.png"
+            width={150}
+            height={48}
+            alt="import message template"
+        />
+
+        Click the import message template button at the top of the page to open a modal where you can import message
+        template(s) from a <code>.zip</code> or <code>.json</code> file.
+    </div>
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/message-center/actions/create-template.png"
+            width={150}
+            height={48}
+            alt="create message template"
+        />
+
+        Click the create message template button at the top of the page to open a modal where you can create a new
+        message template.
+    </div>
+
+</div>
+
