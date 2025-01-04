@@ -281,7 +281,7 @@ export const navigation: Array<NavGroup> = [
       },
       {
         title: 'Decision Tables Editor',
-        href: '/decisions/decision-table-builder',
+        href: '/decisions/decision-table-editor',
       },
     ],
   },
@@ -291,7 +291,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Apps Introduction', href: '/apps' },
       { title: 'Apps List', href: '/apps/apps-list' },
       { title: 'App Preview', href: '/apps/app-preview' },
-      { title: 'App Editor', href: '/apps/app-builder' },
+      { title: 'App Editor', href: '/apps/app-editor' },
     ],
   },
   {
