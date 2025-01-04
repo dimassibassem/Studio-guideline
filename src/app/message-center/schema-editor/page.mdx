@@ -1,0 +1,58 @@
+import {Col, Row} from "../../../components/mdx";
+import {ImagePreview} from "../../../components/ImagePreview";
+
+export const metadata = {
+    title: 'Schema Editor',
+    description: 'Schema editor in Bankerise Studio.',
+}
+
+# Schema Editor
+
+The Schema editor is where you can define the schema for a message type in Bankerise Studio.
+
+<Row>
+    <Col>
+
+        The schema editor enables you to define and customize the schema for a specific message type. You can add
+        fields, specify their types, and configure validation rules to ensure data accuracy.
+
+        At the top of the page, you'll see the message type you're currently working on, providing clear context for
+        your edits.
+
+        Use the schema editor to structure the fields of your message type, such as defining the `name` and `type` of
+        each field, ensuring a well-organized and consistent schema.
+
+    </Col>
+
+
+    <Col>
+        <ImagePreview
+            src="/images/message-center/schema-editor.png" alt="Schema editor"/>
+    </Col>
+
+</Row>
+
+<Row>
+    <Col>
+
+        <ImagePreview
+            className={"rounded-xl"}
+            src="/images/message-center/actions/schema-properties.png"
+            alt="Schema properties"
+        />
+    </Col>
+
+
+    <Col>
+        Click the `Properties` button to open a dropdown menu where you can view and add new properties to the schema.
+
+        Besides each field, you'll find a dropdown menu that allows you to select the field type, such as `String`, `Number`, `Boolean`, `Object` etc.
+
+        You can also add validation rules to each field, `min`, `max`, `pattern`, etc.
+
+        If you're advanced, you can make changes directly to the JSON schema by clicking the `JSON` button.
+
+    </Col>
+
+</Row>
+

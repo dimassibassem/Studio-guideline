@@ -1,0 +1,37 @@
+import {ImagePreview} from "../../../components/ImagePreview";
+import {Col, Row} from "../../../components/mdx";
+
+export const metadata = {
+    title: 'Decision table Editor',
+    description: 'Learn how to create and manage decision tables in Bankerise Studio.',
+}
+
+# Decision table Editor
+
+In Bankerise Studio, you can create and manage decision tables. Decision tables are used to define rules that can be used in decisions and cases.
+
+<Row>
+    <Col>
+
+        The Decision table editor page displays the decision table editor. You can see the decision table name,
+        version, and the date it was last modified.
+
+        in the decision table editor, there is a drop-down menu called `Actions` that allows you that have a sub-menu
+        called `Add rule` that allows you to add a new rule to the decision table.
+
+        The decision table editor has a table that displays the rules in the decision table. You can edit the rules by
+        clicking on the cells in the table.
+
+        You can also add a new column to the decision table by clicking on the `+` button beside the column headers, by
+        clicking on it, a modal will appear that asks you to enter the column name and the data type.
+
+        To delete a column, you can click on the `-` button beside the column name.
+
+
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/decisions/decision-editor.png" alt="Decision table editor"/>
+    </Col>
+
+</Row>

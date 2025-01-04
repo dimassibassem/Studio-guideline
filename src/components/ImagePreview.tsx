@@ -29,6 +29,7 @@ export const ImagePreview: FC<ImageProps> = (props) => {
           width="2000"
           height="1125"
           {...props}
+          alt={props.alt}
         />
       </motion.div>
 
@@ -63,9 +64,10 @@ export const ImagePreview: FC<ImageProps> = (props) => {
         >
           <Image
             className="rounded-lg shadow-lg"
-            {...props}
             width="4000"
             height="2250"
+            {...props}
+            alt={`preview ${props.alt}`}
           />
         </motion.div>
         <button

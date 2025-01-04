@@ -1,0 +1,133 @@
+import {ImagePreview} from "../../../components/ImagePreview";
+import {Col, Note, Row} from "../../../components/mdx";
+
+export const metadata = {
+    title: 'Form Builder',
+    description: 'Forms builder in Bankerise Studio.',
+}
+
+# Form Builder
+
+To manage forms in the Bankerise Studio, we chose Formio as our form management system.
+Formio is our top choice for managing forms because it’s extremely flexible and customizable.
+We can create custom components that fit our needs perfectly.
+Also, we can easily tailor forms to our workflows, making our processes more efficient and adaptable.
+
+## Getting Started {{ anchor: true }}
+
+<Row>
+    <Col>
+        The Form Builder interface consists of several components, including the main canvas area where you can design
+        your forms, a palette of form elements that you can drag and drop onto the canvas, and various tools and options
+
+        on the top you can find a dropdown to select the form type (form or wizard).
+        on the left sidebar, you can find the form elements that you can drag and drop onto the canvas to create your
+        form, you will find also a search bar to search for a specific element.
+
+        For configuration, you can find the form settings on the bottom of the page.
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/forms/form-builder.png" alt="Form Builder"/>
+    </Col>
+</Row>
+
+<Row>
+    <Col>
+        <ImagePreview
+            src="/images/forms/form-builder.gif" unoptimized alt="Form Builder interaction"/>
+    </Col>
+    <Col>
+        After dragging and dropping a form element onto the canvas, a modal will appear where you can configure the
+        element properties. You can set the element label, placeholder, validation rules, etc.
+
+        In `API` tab you can set the `Property Name` which is the key that will be used to store the value of this
+        element.
+
+        Also the form builder supports custom components, you can create your own react components and use them in the
+        form builder.
+    </Col>
+</Row>
+
+
+## Custom Components {{ anchor: true }}
+
+Custom components allow you to extend the functionality of Formio forms beyond the standard set of form fields
+provided by the platform. You can create your own custom form fields to meet specific requirements that are not
+covered by the built-in form fields.
+
+In Bankerise, we’ve created a dedicated package called rise-frontend-forms to house all custom components. When we
+execute the build script for this package, it generates two essential folders: **dist** and **lib**.
+
+The **lib** folder contains the essential library code used within our React application, encapsulating our custom
+components. To optimize the use of these components in various parts of our project, we’ve implemented a Vite
+configuration file. This configuration takes the code from the **lib** folder and bundles it into a single, consolidated
+file we’ve named bankeriseCustom. This bankeriseCustom file is a crucial asset used both in our **Form builder** and
+mobile app.
+
+## Form Policy {{ anchor: true }}
+
+<Row>
+    <Col>
+        We have expanded support for form policy data in JSON to include enriched attributes such as Maximum OTP
+        attempts, OTP length, and OTP resends, among others.
+
+        This enhancement ensures more robust and flexible policy configurations, allowing administrators to define and
+        enforce security measures that align with organizational requirements.
+
+        By incorporating these additional attributes, the policies can adapt to varying use cases and provide better
+        control over form-based authentication processes.
+
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/forms/forms_policy.gif" unoptimized alt="Policy secured form"/>
+    </Col>
+</Row>
+
+<Note>
+    The list of message types is filtered based on the `security` category. This ensures that only message types
+    directly associated with security use cases are displayed, reducing clutter and improving the user experience.
+    By focusing on relevant security-related message types, users can more easily identify the policies they need
+    without sifting through unrelated options.
+</Note>
+
+### Example JSON Structure for Additional Form Policy Data:
+
+Below is an example of the JSON structure for the newly added form policy attributes.
+This structure demonstrates how to define the parameters for OTP (One-Time Password) policies, including the maximum number of attempts, the length of the OTP, and the maximum number of resends allowed.
+These additional attributes can be customized to meet specific security requirements and provide more granular control over form-based authentication processes.
+
+
+```json {{ title: 'Additional Form Policy Data example' }}
+{
+  "otp_max_attempts": 3,
+  "otp_policy_length": 6,
+  "otp_max_resends": 3
+}
+```
+
+The expanded support for form policy additional data in JSON provides administrators with more flexibility and control over form-based authentication processes.
+By incorporating additional attributes such as Maximum OTP attempts, OTP length, and OTP resends, among others, the policies can be tailored to meet specific security requirements and adapt to varying use cases.
+This enhancement ensures that organizations can define and enforce security measures that align with their unique needs, enhancing the overall security posture of their applications and services.
+
+After configuring the form, you can save it by clicking the save button at the top of the page. A modal will
+appear where you can enter the form name, key, and description.
+<Row>
+    <Col>
+
+
+        <Note>
+            There is a checkbox asking if you want to publish the form, This allows users to
+            explicitly mark whether a form should be published upon saving.
+
+            While saving a form, the "Publish Form" checkbox appears.
+
+            If checked, the form is marked as published and becomes immediately available.
+        </Note>
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/forms/save-form-modal.png" unoptimized alt="save form modal"/>
+    </Col>
+</Row>

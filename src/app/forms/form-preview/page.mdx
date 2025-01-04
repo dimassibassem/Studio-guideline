@@ -1,0 +1,104 @@
+import {ImagePreview} from "../../../components/ImagePreview";
+import {Col, Row} from "../../../components/mdx";
+import Image from "next/image";
+
+export const metadata = {
+    title: 'Form Preview',
+    description: 'Forms preview in Bankerise Studio.',
+}
+
+# Form Preview
+
+After clicking on a form from the Forms list page, you will be taken to the Form preview page.
+
+<Row>
+    <Col>
+        <ImagePreview
+            src="/images/forms/form-preview.png" alt="Form preview"/>
+    </Col>
+    <Col>
+
+        The Form preview page displays the form in more detail. You can see the form name, version, key and the
+        date it was last modified.
+
+        You can also see the form preview image, which shows the form fields .
+
+        You can use the buttons at the top of the page to edit the form, view the form history, or delete the
+        form.
+    </Col>
+</Row>
+
+## Actions {{ anchor: true }}
+
+<div className="flex flex-col">
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/processes/actions/preview-actions-modify.png"
+            width={36}
+            height={36}
+            alt="modify form"
+        />
+        Click the edit button at the top of the page to open a modal where you can modify the form name, key, and
+        description.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/processes/actions/preview-actions-duplicate.png"
+            width={36}
+            height={36}
+            alt="duplicate form"
+        />
+
+        Click the duplicate button at the top of the page to open a modal where you can create a copy of the form.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/processes/actions/preview-actions-delete.png"
+            width={36}
+            height={36}
+            alt="delete form"
+        />
+
+        Click the delete button at the top of the page to open a modal and confirm the deletion of the form.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/processes/actions/preview-actions-download.png"
+            width={36}
+            height={36}
+            alt="download form"
+        />
+
+        Click the download button at the top of the page to save the form as a <code>.json</code> file.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/forms/form-editor.png"
+            width={150}
+            height={48}
+            alt="open form editor"
+        />
+
+        Click the open editor button at the top of the page to navigate to the form builder.
+    </div>
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/processes/actions/preview-actions-history.png"
+            width={150}
+            height={48}
+            alt="view form history"
+        />
+        Click the view history button and it will show you the history of the form, and by clicking on a specific
+        version you will navigate to the form preview page of that version.
+    </div>
+</div>

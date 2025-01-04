@@ -1,0 +1,84 @@
+import {ImagePreview} from "../../../components/ImagePreview";
+import {Col, Row} from "../../../components/mdx";
+import Image from "next/image";
+
+export const metadata = {
+    title: 'Forms list',
+    description: 'Forms list in Bankerise Studio.',
+}
+
+# Forms List
+
+Here you can see all the forms that have been created.
+
+<Row>
+    <Col>
+
+        The Forms list page displays all the forms that have been created. You can see the form name,
+        version, and the date it was last modified.
+
+        You can use the search bar to search for a specific form. You can also filter the forms alphabetically,
+        by the date they were last modified or by oldest first.
+
+        Clicking on a form will take you to the form preview page, where you can see a preview of the form.
+    </Col>
+    <Col>
+        <ImagePreview
+            src="/images/forms/forms_list.png" alt="Forms list"/>
+    </Col>
+</Row>
+
+
+## Actions {{ anchor: true }}
+
+<div className="flex flex-col">
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/forms/actions/create-form.png"
+            width={150}
+            height={48}
+            alt="create form"
+        />
+        Click the create form button at the top of the page to open a modal where you can create a new form.
+    </div>
+
+    <div className="flex items-center gap-4">
+        <Image
+            className={"rounded-xl"}
+            src="/images/forms/actions/import-form.png"
+            width={150}
+            height={48}
+            alt="import form"
+        />
+
+        Click the import form button at the top of the page to open a modal where you can import form(s).
+    </div>
+
+    <Row>
+        <Col>
+            <ImagePreview
+                src="/images/forms/actions/import-form-modal.png" alt="Import form modal"/>
+        </Col>
+        <Col>
+            The Import form modal allows you to import form(s) from a file. You can drag and drop a `.json` or `.zip`
+            file or click the `Choose file` button to select a file from your
+            computer.
+        </Col>
+    </Row>
+    <Row>
+        <Col>
+            **Import form conflict**
+
+            if the form you are importing has the same key as an existing form, you will see a conflict modal.
+            You can choose to overwrite the existing form or increment the version of the imported form.
+        </Col>
+        <Col>
+            <ImagePreview
+                src="/images/forms/actions/import-form-conflict.png"
+                alt="Import form conflict"/>
+        </Col>
+    </Row>
+
+
+</div>

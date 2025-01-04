@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
@@ -280,8 +280,8 @@ export const navigation: Array<NavGroup> = [
         href: '/decisions/decision-table-preview',
       },
       {
-        title: 'Decision Tables Builder',
-        href: '/decisions/decision-table-builder',
+        title: 'Decision Tables Editor',
+        href: '/decisions/decision-table-editor',
       },
     ],
   },
@@ -291,7 +291,7 @@ export const navigation: Array<NavGroup> = [
       { title: 'Apps Introduction', href: '/apps' },
       { title: 'Apps List', href: '/apps/apps-list' },
       { title: 'App Preview', href: '/apps/app-preview' },
-      { title: 'App Builder', href: '/apps/app-builder' },
+      { title: 'App Editor', href: '/apps/app-editor' },
     ],
   },
   {
@@ -299,8 +299,8 @@ export const navigation: Array<NavGroup> = [
     links: [
       { title: 'Message Center Introduction', href: '/message-center' },
       { title: 'Messages List', href: '/message-center/messages-list' },
-      { title: 'Message Preview', href: '/message-center/message-preview' },
-      { title: 'Message Builder', href: '/message-center/message-builder' },
+      { title: 'Template Editor', href: '/message-center/template-editor' },
+      { title: 'Schema Editor', href: '/message-center/schema-editor' },
     ],
   },
 ]

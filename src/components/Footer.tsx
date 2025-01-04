@@ -8,6 +8,7 @@ import { navigation } from '@/components/Navigation'
 import { Meteors } from '@/components/Meteros'
 
 import clsx from 'clsx'
+import React from "react";
 
 function PageLink({
   label,
